@@ -4,6 +4,7 @@ import ReactSelect, {components} from 'react-select';
 import { UniversityDetailsModal } from '../UniversityDetailsModal/UniversityDetailsModal';
 import { buildFlagImageUrl } from '../utils/flag-utils';
 
+const OPTION_ALL = {label: 'All', value: null};
 const intlDate = new Intl.DateTimeFormat("en", { dateStyle: "long" });
 
 const Control = ({ children, ...props }) => (
@@ -16,13 +17,21 @@ const uniq = (arr) => Array.from(new Set(arr));
 
 export const Table = ({ data }) => {
   const [countryFilter, setCountryFilter] = useState(null);
+  const [degreeFilter, setDegreeFilter] = useState(null);
   const [selectedUniversity, setSelectedUniversity] = useState(null);
+
   const countryList = uniq(data.map((university) => university?.['Country']))
     .map(country => ({value: country, label: country}));
+  const degreesList = uniq(data.flatMap((university) => university?.['Degrees'].split(', ')))
+    .map(degree => ({value: degree, label: degree}));
 
   const filteredData = data.filter((row) => {
-    if (countryFilter) {
-      return row?.['Country'] === countryFilter;
+    if (countryFilter && row?.['Country'] !== countryFilter) {
+      return false;
+    }
+
+    if (degreeFilter && !row?.['Degrees']?.includes(degreeFilter)) {
+      return false;
     }
 
     return true;
@@ -36,14 +45,13 @@ export const Table = ({ data }) => {
         <div className="table-container" id="table">
           <div className="header" role="rowgroup">
             <div className="header-col col-university" role="columnheader">
-              educational institution
-              <div className="header-col-arrow"></div>
+              Educational Institution
             </div>
             <div className="header-col col-flag" role="columnheader">
               
               <ReactSelect 
-                placeholder="country"
-                options={countryList}
+                placeholder="Country"
+                options={[OPTION_ALL, ...countryList]}
                 onChange={({value}) => setCountryFilter(value)}
                 components={{
                   Control,
@@ -52,8 +60,15 @@ export const Table = ({ data }) => {
               />
             </div>
             <div className="header-col col-degrees" role="columnheader" s>
-              degrees
-              <div className="header-col-arrow"></div>
+              <ReactSelect 
+                placeholder="Degrees"
+                options={[OPTION_ALL, ...degreesList]}
+                onChange={({value}) => setDegreeFilter(value)}
+                components={{
+                  Control,
+                  IndicatorsContainer: () => <div className="header-col-arrow"></div>
+                }}
+              />
             </div>
           </div>
 

@@ -18,8 +18,6 @@ function App() {
     fetchInitialData();
   }, []);
   
-  console.log(universityData);
-  
   return (
     <div className="App">
       {universityData && <Table data={universityData} />}
