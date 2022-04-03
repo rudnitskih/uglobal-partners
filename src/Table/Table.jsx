@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ReactSelect, {components} from 'react-select';
 import { UniversityDetailsModal } from '../UniversityDetailsModal/UniversityDetailsModal';
 import { buildFlagImageUrl } from '../utils/flag-utils';
+import { getDateOfJoin } from '../utils/table-data-utils';
 
 const OPTION_ALL = {label: 'All', value: null};
 const intlDate = new Intl.DateTimeFormat("en", { dateStyle: "long" });
@@ -75,10 +76,8 @@ export const Table = ({ data }) => {
           {
             filteredData.map(row => {
               const universityName = row['Educational institution'];
-              const rowDate = row['Date of joining'];
               const countryCode = row['Country code'];
-              const [day, month, year] = rowDate?.split('.');
-              const dateOfJoin = new Date(year, month - 1, day);
+              const dateOfJoin = getDateOfJoin(row);
               const degrees = row['Degrees'];
 
               return (
