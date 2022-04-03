@@ -1,0 +1,1 @@
+export const buildFlagImageUrl = (countryCode) => `url("https://npmcdn.com/flag-icons@6.1.1/flags/4x3/${countryCode?.toLowerCase()}.svg")`;

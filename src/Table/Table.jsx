@@ -1,22 +1,29 @@
 import './Table.css';
+import { useState } from 'react';
+import { UniversityDetailsModal } from '../UniversityDetailsModal/UniversityDetailsModal';
+import { buildFlagImageUrl } from '../utils/flag-utils';
 
 const intlDate = new Intl.DateTimeFormat("en", { dateStyle: "long" });
-const buildFlagImageUrl = (countryCode) => `url("https://npmcdn.com/flag-icons@6.1.1/flags/4x3/${countryCode?.toLowerCase()}.svg")`;
 
-export const Table = ({data}) => {
-  return  (
+export const Table = ({ data }) => {
+  const [selectedUniversity, setSelectedUniversity] = useState(null);
+
+  return (
+    <>
+      <UniversityDetailsModal university={selectedUniversity} onClose={() => setSelectedUniversity(null)} />
+
       <div id="root" role="table">
         <div class="table-container" id="table">
           <div class="header" role="rowgroup">
-            <div class="header-col col-university">
+            <div class="header-col col-university" role="columnheader">
               educational institution
               <div class="header-col-arrow"></div>
-              </div>
-            <div class="header-col col-flag">
+            </div>
+            <div class="header-col col-flag" role="columnheader">
               country
               <div class="header-col-arrow"></div>
             </div>
-            <div class="header-col col-degrees">
+            <div class="header-col col-degrees" role="columnheader"s>
               degrees
               <div class="header-col-arrow"></div>
             </div>
@@ -24,31 +31,31 @@ export const Table = ({data}) => {
 
           {
             data.map(row => {
-              const university = row['Educational institution'];
+              const universityName = row['Educational institution'];
               const rowDate = row['Date of joining'];
               const countryCode = row['Country code'];
               const [day, month, year] = rowDate?.split(".");
               const dateOfJoin = new Date(year, month - 1, day);
               const degrees = row['Degrees'];
 
-              
               return (
-                <div class="row">
-                  <div class="col col-university">
-                    <div class="col-text">{university}</div>
+                <div class="row" role="row" onClick={() => setSelectedUniversity(row)} key={universityName}>
+                  <div class="col col-university" role="cell">
+                    <div class="col-text">{universityName}</div>
                     <div class="university-date">joined: {intlDate.format(dateOfJoin)}</div>
                   </div>
 
-                  <div class="col-flag">
-                    <div class="flag" style={{backgroundImage: buildFlagImageUrl(countryCode)}}></div>
+                  <div class="col-flag" role="cell">
+                    <div class="flag" style={{ backgroundImage: buildFlagImageUrl(countryCode) }}></div>
                   </div>
 
-                  <div class="col-text col-degrees">{degrees}</div>
+                  <div class="col-text col-degrees" role="cell">{degrees}</div>
                 </div>
               );
             })
           }
         </div>
       </div>
+    </>
   );
 }
