@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Papa from 'papaparse';
 import './App.css';
 import { Table } from './Table/Table';
+import { StatsBar } from './StatsBar/StatsBar';
 
 const UNIVERSITY_DATA_SPREADSHEET_ID = '2PACX-1vS522HjPvcO9ZaxZ1ywosGMa9ggE0m0qe7-cdhc-Ok3A1pOHDmyBy1zzIlxZ0YZJQqxqWc7zGm5uIEc';
 
@@ -20,6 +21,7 @@ function App() {
   
   return (
     <div className="App">
+      <StatsBar data={universityData} />
       {universityData && <Table data={universityData} />}
     </div>
   );
