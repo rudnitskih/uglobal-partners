@@ -1,4 +1,7 @@
+@import "../mixins";
+
 .modal {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -17,18 +20,22 @@
 }
 
 .modal-close-button {
-  width: 70px;
-  height: 60px;
-  margin-left: 8px;
+  @extend %reset-button;
+  position: absolute;
+  top: 15px;
+  right: 15px;
 
-  background-color: #FFFFFF;
-  border-radius: 18px;
-  border: none;
+  path {
+    transition: fill .2s;
+  }
+
+  &:hover path {
+    fill: lighten(#000, 30%);
+  }
 }
 
 .modal-close-button:hover {
   cursor: pointer;
-  background-color: #F2F2F2;
 }
 
 .modal-title {
@@ -36,18 +43,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
-  padding: 0 30px;
+  height: 80px;
+  padding: 0 20px;
 
   border-radius: 18px;
   background-color: #FFFFFF;
+
+  .modal-title-text {
+    padding-right: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    flex: 1 1;
+  }
+
+  .flag {
+    flex-shrink: 0;
+  }
 }
 
-.modal-title-text {
-  max-width: 70%;
-  font-size: 20px;
-  font-weight: 500;
-}
+
 
 .modal-content {
   padding: 42px 30px;
@@ -64,6 +78,10 @@
   line-height: 22px;
 }
 
+.modal-degree {
+  margin-top: 0;
+}
+
 .modal-content p:last-of-type {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }

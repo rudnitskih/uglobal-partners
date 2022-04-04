@@ -9,7 +9,7 @@
   top: 0;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px 20px 20px 114px;
+  padding: 20px 0 20px 114px;
   background-color: #fff;
 }
 
@@ -20,6 +20,7 @@
   font-size: 18px;
   color: #696969;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .header-col-arrow {
@@ -39,7 +40,7 @@
   justify-content: space-between;
   align-items: center;
   height: 94px;
-  padding-left: 104px;
+  padding-left: 114px;
 
   background: #EBEBEB;
   border-radius: 18px;
@@ -97,6 +98,10 @@
 
 .col-degrees {
   flex-basis: 340px;
+
+  &.col-text {
+    padding-left: 30px;
+  }
 }
 
 .col-text {
