@@ -9,7 +9,7 @@
   top: 0;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px 0 20px 114px;
+  padding: 20px 0 20px 60px;
   background-color: #fff;
 }
 
@@ -40,7 +40,7 @@
   justify-content: space-between;
   align-items: center;
   height: 94px;
-  padding-left: 114px;
+  padding-left: 60px;
 
   background: #EBEBEB;
   border-radius: 18px;
@@ -67,6 +67,7 @@
 
 .col-university {
   flex: 1 1;
+  min-width: 430px;
 }
 
 .university-date {

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Header.module.scss';
-import logo from './logo.webp'
+import logo from './logo.webp';
 
 export function Header() {
   return (
