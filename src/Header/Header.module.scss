@@ -1,0 +1,38 @@
+.root {
+  display: flex;
+  background-color: #f2da32;
+  height: 75px;
+  z-index: 10;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  width: 110px;
+}
+
+.menuContainer {
+  flex-grow: 1;
+  padding-right: 100px;
+}
+
+.menu {
+  display: flex;
+  max-width: 900px;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0 auto 5px auto;
+  padding: 0;
+}
+
+.link {
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s;
+
+  &:hover {
+    color: lighten(#000, 30%);
+  }
+}

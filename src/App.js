@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Papa from 'papaparse';
 import './App.scss';
-import { Table } from './Table/Table';
-import { StatsBar } from './StatsBar/StatsBar';
-import { getDateOfJoin } from './utils/table-data-utils';
+import {Table} from './Table/Table';
+import {StatsBar} from './StatsBar/StatsBar';
+import {getDateOfJoin} from './utils/table-data-utils';
+import {Header} from "./Header";
 
 const UNIVERSITY_DATA_SPREADSHEET_ID = '2PACX-1vS522HjPvcO9ZaxZ1ywosGMa9ggE0m0qe7-cdhc-Ok3A1pOHDmyBy1zzIlxZ0YZJQqxqWc7zGm5uIEc';
 
@@ -22,10 +23,13 @@ function App() {
   }, []);
 
   return (
-    <div className="content">
-      <StatsBar data={universityData} />
-      {universityData && <Table data={universityData} />}
-    </div>
+    <>
+      <Header />
+      <div className="content">
+        <StatsBar data={universityData} />
+        {universityData && <Table data={universityData} />}
+      </div>
+    </>
   );
 }
 

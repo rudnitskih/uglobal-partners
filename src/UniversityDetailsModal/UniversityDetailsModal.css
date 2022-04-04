@@ -7,7 +7,7 @@
   padding: 36px 50px 50px;
 
   border-radius: 18px;
-  background-color: #F4CB00;
+  background-color: #f2da32;
   border: none;
   outline: none;
 }
@@ -52,14 +52,14 @@
 .modal-content {
   padding: 42px 30px;
   margin-top: 30px;
-  
+
   border-radius: 18px;
   background-color: #FFFFFF;
 }
 
 .modal-content p {
   margin-bottom: 25px;
-  
+
   font-size: 18px;
   line-height: 22px;
 }

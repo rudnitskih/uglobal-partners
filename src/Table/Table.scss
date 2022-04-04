@@ -1,13 +1,16 @@
 .table-container {
   padding: 60px 0;
+  min-height: 1000px;
 }
 
 .header {
   display: flex;
+  position: sticky;
+  top: 0;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20px;
-  padding-left: 104px;
+  padding: 20px 20px 20px 114px;
+  background-color: #fff;
 }
 
 .header-col {

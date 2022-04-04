@@ -17,7 +17,7 @@ export const UniversityDetailsModal = ({ university, onClose }) => {
       onRequestClose={onClose}
       preventScroll={true}
       className="modal"
-      style={{ overlay: { display: 'flex', justifyContent: 'center' } }}
+      style={{ overlay: { display: 'flex', justifyContent: 'center', zIndex: 20 } }}
     >
         <div className="modal-header">
           <div className="modal-title">
