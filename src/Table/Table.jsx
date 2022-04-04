@@ -5,7 +5,9 @@ import {UniversityDetailsModal} from '../UniversityDetailsModal/UniversityDetail
 import {buildFlagImageUrl} from '../utils/flag-utils';
 import {getDateOfJoin} from '../utils/table-data-utils';
 
-const OPTION_ALL = {label: 'All', value: null};
+const OPTION_ALL_COUNTRIES = {label: 'All Countries', value: null};
+const OPTION_ALL_DEGREES = {label: 'All Degrees', value: null};
+
 const intlDate = new Intl.DateTimeFormat("en", {dateStyle: "long"});
 
 const Control = ({children, ...props}) => (
@@ -53,7 +55,7 @@ export const Table = ({ data }) => {
               className="react-select-container"
               classNamePrefix="react-select"
               placeholder="Country"
-              options={[OPTION_ALL, ...countryList]}
+              options={[OPTION_ALL_COUNTRIES, ...countryList]}
               onChange={({value}) => setCountryFilter(value)}
               components={{
                 Control,
@@ -66,7 +68,7 @@ export const Table = ({ data }) => {
               className="react-select-container"
               classNamePrefix="react-select"
               placeholder="Degrees"
-              options={[OPTION_ALL, ...degreesList]}
+              options={[OPTION_ALL_DEGREES, ...degreesList]}
               onChange={({value}) => setDegreeFilter(value)}
               components={{
                 Control,
@@ -90,7 +92,7 @@ export const Table = ({ data }) => {
                   <div className="university-date">joined: {intlDate.format(dateOfJoin)}</div>
                 </div>
 
-                <div className="col col-flag" role="cell">
+                <div className="col col-text col-flag" role="cell">
                   <div className="flag" style={{ backgroundImage: buildFlagImageUrl(countryCode) }}></div>
                 </div>
 

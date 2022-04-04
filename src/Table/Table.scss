@@ -1,6 +1,16 @@
+@import "../mixins";
+
+$min-width: 780px;
+
 .table-container {
   padding: 60px 0;
   min-height: 1000px;
+  overflow: auto;
+
+  @include for-phone-only() {
+    min-height: auto;
+    padding: 20px 0;
+  }
 }
 
 .header {
@@ -9,8 +19,22 @@
   top: 0;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px 0 20px 60px;
+  padding: 20px 10px 20px 60px;
   background-color: #fff;
+  min-width: $min-width;
+  z-index: 5;
+
+  @include for-phone-only() {
+    display: block;
+    min-width: auto;
+    padding: 0;
+  }
+}
+
+.header-col.col-university {
+  @include for-phone-only() {
+    display: none;
+  }
 }
 
 .header-col {
@@ -19,8 +43,12 @@
   font-weight: 400;
   font-size: 18px;
   color: #696969;
-  padding: 0 20px;
+  padding: 0 5px;
   box-sizing: border-box;
+
+  @include for-phone-only() {
+    padding: 0;
+  }
 }
 
 .header-col-arrow {
@@ -35,22 +63,30 @@
 }
 
 .row {
+  position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   height: 94px;
-  padding-left: 60px;
+  padding: 0 10px 0 60px;
+  min-width: $min-width;
 
   background: #EBEBEB;
-  border-radius: 18px;
+  border-radius: 10px;
 
   cursor: pointer;
   transition: background .2s;
-}
 
-.row:hover {
-  background: #CECECE;
+  &:hover {
+    background: #CECECE;
+  }
+
+  @include for-phone-only() {
+    display: block;
+    min-width: 0;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
 
 .row + .row {
@@ -61,13 +97,16 @@
   display: flex;
   align-items: start;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 0 5px;
   box-sizing: border-box;
+
+  @include for-phone-only() {
+    padding: 0;
+  }
 }
 
 .col-university {
   flex: 1 1;
-  min-width: 430px;
 }
 
 .university-date {
@@ -79,8 +118,16 @@
 }
 
 .col-flag {
-  flex-basis: 200px;
+  flex: 0 0 200px;
   align-items: center;
+
+  &.col-text {
+    @include for-phone-only() {
+      position: absolute;
+      left: 15px;
+      bottom: 22px;
+    }
+  }
 }
 
 .flag-wrapper {
@@ -92,16 +139,35 @@
   height: 38px;
   width: 60px;
 
-  border-radius: 8px;
+  border-radius: 5px;
   background-size: 60px;
   background-position: 0;
+
+  @include for-phone-only() {
+    height: 19px;
+    width: 30px;
+    background-size: 30px;
+  }
 }
 
 .col-degrees {
-  flex-basis: 340px;
+  flex: 0 0 340px;
 
   &.col-text {
-    padding-left: 30px;
+    padding-left: 15px;
+
+    @include for-tablets-only() {
+      flex-basis: 180px;
+    }
+
+    @include for-phone-only() {
+      margin-top: 10px;
+      padding-left: 0;
+    }
+  }
+
+  @include for-tablets-only() {
+    flex-basis: 180px;
   }
 }
 
@@ -118,14 +184,22 @@
 }
 
 .react-select-container {
-
   .col-flag & {
     margin: 0 auto;
+  }
+
+  @include for-phone-only() {
+    width: 100%;
+    margin-bottom: 15px !important;
   }
 }
 
 .select-control {
   width: 150px;
+
+  @include for-phone-only() {
+    width: 100%;
+  }
 }
 
 .select-control div:first-child {

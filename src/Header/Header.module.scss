@@ -1,3 +1,5 @@
+@import "../mixins";
+
 .root {
   display: flex;
   background-color: #f2da32;
@@ -5,15 +7,31 @@
   z-index: 10;
   align-items: center;
   padding: 20px;
+  box-sizing: border-box;
+
+  @include for-phone-only() {
+    flex-direction: column;
+    padding: 24px;
+    height: auto;
+    align-items: flex-start;
+  }
 }
 
 .logo {
   width: 110px;
+
+  @include for-phone-only() {
+    width: 100px;
+  }
 }
 
 .menuContainer {
   flex-grow: 1;
   padding-right: 100px;
+
+  @include for-tablets-only() {
+    padding-right: 0;
+  }
 }
 
 .menu {
@@ -23,6 +41,11 @@
   list-style: none;
   margin: 0 auto 5px auto;
   padding: 0;
+
+  @include for-phone-only() {
+    margin-top: 30px;
+    flex-direction: column;
+  }
 }
 
 .link {
@@ -31,6 +54,17 @@
   text-decoration: none;
   font-weight: 500;
   transition: color .2s;
+
+  @include for-tablets-only() {
+    font-size: 12px;
+  }
+
+  @include for-phone-only() {
+    font-size: 13px;
+    padding: 10px 0;
+    font-weight: 700;
+    display: inline-block;
+  }
 
   &:hover {
     color: lighten(#000, 30%);

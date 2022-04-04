@@ -9,10 +9,16 @@
   width: 50%;
   padding: 36px 50px 50px;
 
-  border-radius: 18px;
+  border-radius: 9px;
   background-color: #f2da32;
   border: none;
   outline: none;
+
+  @include for-phone-only() {
+    padding: 24px;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+  }
 }
 
 .modal-header {
@@ -24,6 +30,16 @@
   position: absolute;
   top: 15px;
   right: 15px;
+
+  @include for-phone-only() {
+    top: 5px;
+    right: 5px;
+
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
 
   path {
     transition: fill .2s;
@@ -46,7 +62,7 @@
   height: 80px;
   padding: 0 20px;
 
-  border-radius: 18px;
+  border-radius: 5px;
   background-color: #FFFFFF;
 
   .modal-title-text {
@@ -61,14 +77,17 @@
   }
 }
 
-
-
 .modal-content {
   padding: 42px 30px;
   margin-top: 30px;
 
-  border-radius: 18px;
+  border-radius: 5px;
   background-color: #FFFFFF;
+
+  @include for-phone-only() {
+    padding: 25px 20px;
+    margin-top: 15px;
+  }
 }
 
 .modal-content p {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './StatsBar.css';
+import './StatsBar.scss';
 
 export const StatsBar = ({data}) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
@@ -32,9 +32,9 @@ export const StatsBar = ({data}) => {
           Opportunities created by partners
         </div>
 
-        <div className={`stats-item-2-popup ${isTooltipVisible ? '' : 'hidden'}`}>
-          Much more in reality. Not every Institution makes it public
-        </div>
+        {/*<div className={`stats-item-2-popup ${isTooltipVisible ? '' : 'hidden'}`}>*/}
+        {/*  Much more in reality. Not every Institution makes it public*/}
+        {/*</div>*/}
       </div>
     </div>
   );
