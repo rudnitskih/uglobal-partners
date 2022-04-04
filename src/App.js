@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Papa from 'papaparse';
-import './App.css';
+import './App.scss';
 import { Table } from './Table/Table';
 import { StatsBar } from './StatsBar/StatsBar';
 import { getDateOfJoin } from './utils/table-data-utils';
@@ -16,13 +16,13 @@ function App() {
 
     setUniversityData(data);
   };
-  
+
   React.useEffect(() => {
     fetchInitialData();
   }, []);
-  
+
   return (
-    <div className="App">
+    <div className="content">
       <StatsBar data={universityData} />
       {universityData && <Table data={universityData} />}
     </div>
@@ -31,7 +31,7 @@ function App() {
 
 export default App;
 
-// 
+//
 export const loadSpreadsheet = (spreadsheetID) => {
   return new Promise((resolve, reject) => {
     Papa.parse(`https://docs.google.com/spreadsheets/d/e/${spreadsheetID}/pub?output=csv`, {

@@ -9,8 +9,8 @@ export const StatsBar = ({data}) => {
     const positions = Number(univesity['Academic Positions/Appointments']);
 
     return acc + scholarships + positions;
-  }, 0) : '00';
-  
+  }, 0) : '000';
+
   return (
     <div className="stats-bar">
       <div className="stats-item stats-item-1" >
