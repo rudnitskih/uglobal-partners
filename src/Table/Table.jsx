@@ -88,7 +88,7 @@ export const Table = ({ data }) => {
             const visible = row.visible;
             const universityName = row['Educational institution'];
             const countryCode = row['Country code'];
-            const logoDriveId = row.logoDriveId;
+            const logoUrl = row['Logo'];
             const dateOfJoin = getDateOfJoin(row);
             const degrees = row['Degrees'];
 
@@ -97,8 +97,8 @@ export const Table = ({ data }) => {
                 setSelectedUniversity(row)} key={universityName}>
                 <div className="col col-text col-logo" role="cell">
                   {
-                    logoDriveId && (
-                      <img className="table-logo" src={`https://drive.google.com/uc?export=view&id=${logoDriveId}`} alt="" />
+                    logoUrl && (
+                      <img className="table-logo" src={logoUrl} alt="" />
                     )
                   }
                 </div>

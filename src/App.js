@@ -19,8 +19,8 @@ function App() {
         const logoDriveId = typeof row['Logo'] === 'string' && row['Logo'].match(/\/d\/(.*)\//)?.[1];
 
         return {
-          logoDriveId,
-          ...row
+          ...row,
+          Logo: logoDriveId ? `https://drive.google.com/uc?id=${logoDriveId}` : undefined,
         };
       })
       .sort((a, b) => getDateOfJoin(b) - getDateOfJoin(a)));

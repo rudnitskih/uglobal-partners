@@ -5,7 +5,7 @@ import logo from './logo.webp';
 export function Header() {
   return (
     <div className={s.root}>
-      <img src={logo} alt="logo" className={s.logo}/>
+      <img src={logo} alt="" className={s.logo}/>
 
       <div className={s.menuContainer}>
         <ul className={s.menu}>
