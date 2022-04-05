@@ -28,7 +28,7 @@ export const UniversityDetailsModal = ({ university, onClose }) => {
       <div className="modal-header">
         <div className="modal-title">
           { logoDriveId && (
-            <img src={`https://drive.google.com/uc?export=view&id=${logoDriveId}`} className="modal-title-logo"/>)
+            <img src={`https://drive.google.com/uc?export=view&id=${logoDriveId}`} className="modal-title-logo" alt="Logo"/>)
           }
           <div className="modal-title-text">{universityName}</div>
           <div className="flag mini"
