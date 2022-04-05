@@ -5,7 +5,10 @@ $min-width: 770px;
 .table-container {
   padding: 40px 0;
   min-height: 1000px;
-  overflow: auto;
+
+  @include for-tablets-only() {
+    overflow: auto;
+  }
 
   @include for-phone-only() {
     min-height: auto;
