@@ -1,6 +1,6 @@
 @import "../mixins";
 
-$min-width: 780px;
+$min-width: 770px;
 
 .table-container {
   padding: 40px 0;
@@ -86,6 +86,10 @@ $min-width: 780px;
     background: #CECECE;
   }
 
+  @include for-tablets-only() {
+    height: 104px;
+  }
+
   @include for-phone-only() {
     display: block;
     min-width: 0;
@@ -157,6 +161,10 @@ $min-width: 780px;
       left: 15px;
       bottom: 22px;
     }
+  }
+
+  @include for-tablets-only() {
+    flex-basis: 170px;
   }
 }
 

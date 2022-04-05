@@ -13,9 +13,17 @@ function App() {
 
   const fetchInitialData = async () => {
     const data = await loadSpreadsheet(UNIVERSITY_DATA_SPREADSHEET_ID);
-    data.sort((a, b) => getDateOfJoin(b) - getDateOfJoin(a));
 
-    setUniversityData(data);
+    setUniversityData(data
+      .map(row => {
+        const logoDriveId = typeof row['Logo'] === 'string' && row['Logo'].match(/\/d\/(.*)\//)?.[1];
+
+        return {
+          logoDriveId,
+          ...row
+        };
+      })
+      .sort((a, b) => getDateOfJoin(b) - getDateOfJoin(a)));
   };
 
   React.useEffect(() => {

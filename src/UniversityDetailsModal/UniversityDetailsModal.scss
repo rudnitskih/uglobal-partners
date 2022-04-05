@@ -14,6 +14,10 @@
   border: none;
   outline: none;
 
+  @include for-tablets-only() {
+    width: 70%;
+  }
+
   @include for-phone-only() {
     padding: 24px;
     width: calc(100% - 24px);
@@ -59,8 +63,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
-  padding: 0 20px;
+  min-height: 80px;
+  padding: 10px 20px;
 
   border-radius: 5px;
   background-color: #FFFFFF;
@@ -75,6 +79,12 @@
   .flag {
     flex-shrink: 0;
   }
+}
+
+.modal-title-logo {
+  width: 60px;
+  max-height: 80%;
+  margin-right: 15px;
 }
 
 .modal-content {

@@ -10,6 +10,7 @@ export const UniversityDetailsModal = ({ university, onClose }) => {
   const degrees = university?.['Degrees'];
   const statement = university?.['Public Statement of Support'];
   const link = university?.['Step by step instructions for Ukrainian students'];
+  const logoDriveId = university?.logoDriveId;
 
   return (
     <ReactModal
@@ -26,6 +27,9 @@ export const UniversityDetailsModal = ({ university, onClose }) => {
 
       <div className="modal-header">
         <div className="modal-title">
+          { logoDriveId && (
+            <img src={`https://drive.google.com/uc?export=view&id=${logoDriveId}`} className="modal-title-logo"/>)
+          }
           <div className="modal-title-text">{universityName}</div>
           <div className="flag mini"
                style={{backgroundImage: buildFlagImageUrl(countryCode)}}/>

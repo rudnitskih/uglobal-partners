@@ -88,7 +88,7 @@ export const Table = ({ data }) => {
             const visible = row.visible;
             const universityName = row['Educational institution'];
             const countryCode = row['Country code'];
-            const logoDriveId = typeof row['Logo'] === 'string' && row['Logo'].match(/\/d\/(.*)\//)?.[1]
+            const logoDriveId = row.logoDriveId;
             const dateOfJoin = getDateOfJoin(row);
             const degrees = row['Degrees'];
 
