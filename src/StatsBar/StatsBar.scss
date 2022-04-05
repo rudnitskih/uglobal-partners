@@ -4,10 +4,9 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-
-  @include for-tablets-only() {
-    zoom: 0.7;
-  }
+  zoom: 0.7;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .stats-item {

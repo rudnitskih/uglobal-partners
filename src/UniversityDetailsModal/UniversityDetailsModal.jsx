@@ -13,6 +13,7 @@ export const UniversityDetailsModal = ({ university, onClose }) => {
 
   return (
     <ReactModal
+      ariaHideApp={false}
       isOpen={!!university}
       onRequestClose={onClose}
       preventScroll={true}

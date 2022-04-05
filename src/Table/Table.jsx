@@ -28,16 +28,21 @@ export const Table = ({ data }) => {
   const degreesList = uniq(data.flatMap((university) => university?.['Degrees'].split(', ')))
     .map(degree => ({value: degree, label: degree}));
 
-  const filteredData = data.filter((row) => {
+  const filteredData = data.map((row) => {
+    let visible = true;
+
     if (countryFilter && row?.['Country'] !== countryFilter) {
-      return false;
+      visible = false;
     }
 
     if (degreeFilter && !row?.['Degrees']?.includes(degreeFilter)) {
-      return false;
+      visible = false;
     }
 
-    return true;
+    return {
+      ...row,
+      visible,
+    };
   });
 
   return (
@@ -80,20 +85,31 @@ export const Table = ({ data }) => {
 
         {
           filteredData.map(row => {
+            const visible = row.visible;
             const universityName = row['Educational institution'];
             const countryCode = row['Country code'];
+            const logoDriveId = typeof row['Logo'] === 'string' && row['Logo'].match(/\/d\/(.*)\//)?.[1]
             const dateOfJoin = getDateOfJoin(row);
             const degrees = row['Degrees'];
 
             return (
-              <div className="row" role="row" onClick={() => setSelectedUniversity(row)} key={universityName}>
+              <div className={`row ${visible ? '' : 'isHiddenRow'}`} role="row" onClick={() =>
+                setSelectedUniversity(row)} key={universityName}>
+                <div className="col col-text col-logo" role="cell">
+                  {
+                    logoDriveId && (
+                      <img className="table-logo" src={`https://drive.google.com/uc?export=view&id=${logoDriveId}`} alt="" />
+                    )
+                  }
+                </div>
+
                 <div className="col col-university" role="cell">
                   <div className="col-text">{universityName}</div>
                   <div className="university-date">joined: {intlDate.format(dateOfJoin)}</div>
                 </div>
 
                 <div className="col col-text col-flag" role="cell">
-                  <div className="flag" style={{ backgroundImage: buildFlagImageUrl(countryCode) }}></div>
+                  <div className="flag" style={{backgroundImage: buildFlagImageUrl(countryCode)}}/>
                 </div>
 
                 <div className="col col-text col-degrees" role="cell">{degrees}</div>
