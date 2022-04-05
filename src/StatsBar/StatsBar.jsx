@@ -16,7 +16,7 @@ export const StatsBar = ({data}) => {
   return (
     <div className="stats-bar">
       <div className="stats-item stats-item-1" >
-        <CountUp className="stats-num" end={joinedUniversities} duration={1} preserveValue={true}/>
+        <CountUp className="stats-num" start={20} end={joinedUniversities} duration={1} preserveValue={true}/>
         <div className="stats-description">Joined Educational Institutions</div>
       </div>
 
@@ -26,7 +26,7 @@ export const StatsBar = ({data}) => {
         onMouseLeave={() => setIsTooltipVisible(false)}
       >
         <div className="stats-num">
-          <CountUp end={opportunitiesLength} duration={2} preserveValue={true}/>
+          <CountUp start={600} end={opportunitiesLength} duration={2} preserveValue={true}/>
           +
         </div>
         <div className="stats-description">
