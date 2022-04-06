@@ -21,7 +21,7 @@ export function Header() {
             ].map(({title, url}) => {
               return (
                 <li key={url}>
-                  <a href={`${hostname}/${url}/`} className={s.link}>{title}</a>
+                  <a href={`https://${hostname}/${url}/`} className={s.link} target="_top">{title}</a>
                 </li>
               )
             })
