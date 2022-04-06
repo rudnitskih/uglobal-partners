@@ -9,7 +9,9 @@ export function Header() {
 
   return (
     <div className={s.root}>
-      <img src={logo} alt="" className={s.logo}/>
+      <a href="/" target="_top">
+        <img src={logo} alt="" className={s.logo}/>
+      </a>
 
       <div className={s.menuContainer}>
         <ul className={s.menu}>

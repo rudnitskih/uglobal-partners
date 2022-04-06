@@ -109,7 +109,7 @@ $min-width: 770px;
 
 .col {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
   padding: 0 5px;
   box-sizing: border-box;
