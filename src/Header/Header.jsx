@@ -9,7 +9,7 @@ export function Header() {
 
   return (
     <div className={s.root}>
-      <a href="/" target="_top">
+      <a href={`https://${hostname}`} target="_top">
         <img src={logo} alt="" className={s.logo}/>
       </a>
 
