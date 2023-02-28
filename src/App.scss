@@ -6,7 +6,6 @@
 
 .content {
   max-width: 1100px;
-  padding: 40px 24px;
   box-sizing: border-box;
   margin: 0 auto;
 
@@ -14,4 +13,8 @@
     padding-top: 20px;
     padding-bottom: 80px;
   }
+}
+
+.content_page {
+  padding: 40px 24px;
 }

@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App, {APP_MODE} from './App';
 import reportWebVitals from './reportWebVitals';
+
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App mode={params.widget !== undefined ? APP_MODE.WIDGET : APP_MODE.PAGE }/>
   </React.StrictMode>,
   document.getElementById('root')
 );

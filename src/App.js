@@ -5,10 +5,16 @@ import {Table} from './Table/Table';
 import {StatsBar} from './StatsBar/StatsBar';
 import {getDateOfJoin} from './utils/table-data-utils';
 import {Header} from "./Header";
+import classNames from "classnames";
 
 const UNIVERSITY_DATA_SPREADSHEET_ID = '2PACX-1vS522HjPvcO9ZaxZ1ywosGMa9ggE0m0qe7-cdhc-Ok3A1pOHDmyBy1zzIlxZ0YZJQqxqWc7zGm5uIEc';
 
-function App() {
+export const APP_MODE = {
+  PAGE: 'PAGE',
+  WIDGET: 'WIDGET',
+}
+
+function App({mode}) {
   const [universityData, setUniversityData] = useState();
 
   const fetchInitialData = async () => {
@@ -32,8 +38,12 @@ function App() {
 
   return (
     <>
-      <Header />
-      <div className="content">
+      {mode === APP_MODE.PAGE && (
+        <Header />
+      )}
+      <div className={classNames("content", {
+        'content_page': mode === APP_MODE.PAGE,
+      })}>
         <StatsBar data={universityData} />
         {universityData && <Table data={universityData} />}
       </div>
@@ -43,8 +53,7 @@ function App() {
 
 export default App;
 
-//
-export const loadSpreadsheet = (spreadsheetID) => {
+const loadSpreadsheet = (spreadsheetID) => {
   return new Promise((resolve, reject) => {
     Papa.parse(`https://docs.google.com/spreadsheets/d/e/${spreadsheetID}/pub?output=csv`, {
       download: true,
