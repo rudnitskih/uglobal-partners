@@ -19,7 +19,7 @@ const Control = ({children, ...props}) => (
 
 const uniq = (arr) => Array.from(new Set(arr));
 
-export const Table = ({ data, mode }) => {
+export const Table = ({data, mode}) => {
   const [countryFilter, setCountryFilter] = useState(null);
   const [degreeFilter, setDegreeFilter] = useState(null);
   const [selectedUniversity, setSelectedUniversity] = useState(null);
@@ -48,7 +48,7 @@ export const Table = ({ data, mode }) => {
 
   return (
     <>
-      <UniversityDetailsModal university={selectedUniversity} onClose={() => setSelectedUniversity(null)} />
+      <UniversityDetailsModal university={selectedUniversity} onClose={() => setSelectedUniversity(null)}/>
 
       <div className="table-container">
         <div className="header" role="rowgroup">
@@ -100,7 +100,7 @@ export const Table = ({ data, mode }) => {
                 <div className="col col-text col-logo" role="cell">
                   {
                     logoUrl && (
-                      <img className="table-logo" src={logoUrl} alt="" />
+                      <img className="table-logo" src={logoUrl} alt=""/>
                     )
                   }
                 </div>
@@ -109,7 +109,14 @@ export const Table = ({ data, mode }) => {
                   <div className="col-text">{universityName}</div>
                   <div className="university-date">joined: {intlDate.format(dateOfJoin)}</div>
                   {linkToApply && (
-                    <a href={linkToApply} title="Link To Apply" className="apply-link">Link To Apply</a>
+                    <a href={linkToApply}
+                       target="_blank"
+                       onClick={(e) => e.stopPropagation()}
+                       className="apply-link"
+                       title="Link To Apply"
+                    >
+                      Link To Apply
+                    </a>
                   )}
                 </div>
 
@@ -125,4 +132,4 @@ export const Table = ({ data, mode }) => {
       </div>
     </>
   );
-}
+};
