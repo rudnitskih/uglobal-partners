@@ -6,13 +6,9 @@ import {StatsBar} from './StatsBar/StatsBar';
 import {getDateOfJoin} from './utils/table-data-utils';
 import {Header} from "./Header";
 import classNames from "classnames";
+import {APP_MODE} from "./constants";
 
 const UNIVERSITY_DATA_SPREADSHEET_ID = '2PACX-1vS522HjPvcO9ZaxZ1ywosGMa9ggE0m0qe7-cdhc-Ok3A1pOHDmyBy1zzIlxZ0YZJQqxqWc7zGm5uIEc';
-
-export const APP_MODE = {
-  PAGE: 'PAGE',
-  WIDGET: 'WIDGET',
-}
 
 function App({mode}) {
   const [universityData, setUniversityData] = useState();
@@ -33,7 +29,7 @@ function App({mode}) {
   };
 
   React.useEffect(() => {
-    fetchInitialData();
+    void fetchInitialData();
   }, []);
 
   return (
@@ -41,11 +37,9 @@ function App({mode}) {
       {mode === APP_MODE.PAGE && (
         <Header />
       )}
-      <div className={classNames("content", {
-        'content_page': mode === APP_MODE.PAGE,
-      })}>
+      <div className={classNames("content", mode === APP_MODE.PAGE ? 'isPage' : 'isWidget')}>
         <StatsBar data={universityData} />
-        {universityData && <Table data={universityData} />}
+        {universityData && <Table data={universityData} mode={mode} />}
       </div>
     </>
   );

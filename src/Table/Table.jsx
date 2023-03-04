@@ -4,6 +4,7 @@ import ReactSelect, {components} from 'react-select';
 import {UniversityDetailsModal} from '../UniversityDetailsModal/UniversityDetailsModal';
 import {buildFlagImageUrl} from '../utils/flag-utils';
 import {getDateOfJoin} from '../utils/table-data-utils';
+import {APP_MODE} from "../constants";
 
 const OPTION_ALL_COUNTRIES = {label: 'All Countries', value: null};
 const OPTION_ALL_DEGREES = {label: 'All Degrees', value: null};
@@ -18,7 +19,7 @@ const Control = ({children, ...props}) => (
 
 const uniq = (arr) => Array.from(new Set(arr));
 
-export const Table = ({ data }) => {
+export const Table = ({ data, mode }) => {
   const [countryFilter, setCountryFilter] = useState(null);
   const [degreeFilter, setDegreeFilter] = useState(null);
   const [selectedUniversity, setSelectedUniversity] = useState(null);
@@ -91,6 +92,7 @@ export const Table = ({ data }) => {
             const logoUrl = row['Logo'];
             const dateOfJoin = getDateOfJoin(row);
             const degrees = row['Degrees'];
+            const linkToApply = mode === APP_MODE.WIDGET && row['Link to apply'];
 
             return (
               <div className={`row ${visible ? '' : 'isHiddenRow'}`} role="row" onClick={() =>
@@ -106,6 +108,9 @@ export const Table = ({ data }) => {
                 <div className="col col-university" role="cell">
                   <div className="col-text">{universityName}</div>
                   <div className="university-date">joined: {intlDate.format(dateOfJoin)}</div>
+                  {linkToApply && (
+                    <a href={linkToApply} title="Link To Apply" className="apply-link">Link To Apply</a>
+                  )}
                 </div>
 
                 <div className="col col-text col-flag" role="cell">

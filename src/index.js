@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App, {APP_MODE} from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {APP_MODE} from "./constants";
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
